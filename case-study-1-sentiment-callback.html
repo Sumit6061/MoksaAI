@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study 1 - Negative Sentiment Callback</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .company {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .home-button {
+            background: white;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .home-button:hover {
+            background: #edf2f7;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .title {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+
+        .subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin: 25px 0 15px;
+            color: #2d3748;
+        }
+
+        .text {
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .diagram-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .diagram-container img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .stat-box {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="top-bar">
+        <div class="company">MokSa Technologies</div>
+        <a href="index.html" class="home-button">← Back to Home</a>
+    </div>
+
+    <div class="card">
+        <div class="title">Negative Sentiment Callback Automation</div>
+        <div class="subtitle">Case Study 1: Real-Time AI Sentiment Detection and Proactive Recovery</div>
+
+        <div class="section-title">⚠️ The Problem</div>
+        <div class="text">
+            Contact centers often lack real-time visibility into customer sentiment. 
+            Negative experiences go unnoticed until after the interaction, leading to 
+            customer churn, escalations, and poor satisfaction scores.
+        </div>
+
+        <div class="section-title">🤖 AI-Driven Solution</div>
+        <div class="text">
+            Genesys AI analyzes live conversations and detects negative sentiment. 
+            When a threshold is crossed, an automated workflow triggers a callback 
+            and notifies supervisors for immediate intervention.
+        </div>
+
+        <div class="section-title">🔧 MokSa Implementation</div>
+        <div class="text">
+            MokSa configured real-time sentiment analysis, automated callback workflows, 
+            supervisor notifications, and escalation logic using Genesys Cloud AI 
+            and Architect workflows.
+        </div>
+
+        <div class="stat-box">
+            <div class="stat-value">Up to 30%</div>
+            <div class="stat-label">Operational Cost Reduction (Gartner)</div>
+        </div>
+
+        <div class="diagram-container">
+            <img src="case1-flow.png" alt="Negative Sentiment Callback Flow">
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
