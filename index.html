@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genesys AI Case Studies - Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--card-color-1), var(--card-color-2));
+        }
+
+        .case-card.case-4 {
+            --card-color-1: #667eea;
+            --card-color-2: #764ba2;
+        }
+
+        .case-card.case-5 {
+            --card-color-1: #a8edea;
+            --card-color-2: #fed6e3;
+        }
+
+        .case-card.case-6 {
+            --card-color-1: #f093fb;
+            --card-color-2: #f5576c;
+        }
+
+        .case-card.case-7 {
+            --card-color-1: #fa709a;
+            --card-color-2: #fee140;
+        }
+
+        .case-card.case-8 {
+            --card-color-1: #4facfe;
+            --card-color-2: #00f2fe;
+        }
+
+        .case-number {
+            font-size: 0.9em;
+            color: #718096;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .case-title {
+            font-size: 1.8em;
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .case-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .case-tech {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tech-label {
+            font-size: 0.85em;
+            color: #718096;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .tech-items {
+            color: #2d3748;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .case-stat {
+            background: linear-gradient(90deg, var(--card-color-1), var(--card-color-2));
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.95;
+        }
+
+        .view-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, var(--card-color-1), var(--card-color-2));
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .view-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .case-studies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Genesys AI Case Studies</h1>
+            <p>Transforming Customer Experience with Artificial Intelligence</p>
+        </div>
+
+        <div class="case-studies-grid">
+            <!-- Case Study 4 -->
+            <div class="case-card case-4">
+                <div class="case-number">Case Study 4</div>
+                <div class="case-title">AI Email Bot Automation</div>
+                <div class="case-description">
+                    Automating the handling of large volumes of inbound emails through AI-powered intent detection and automated response generation.
+                </div>
+                <div class="case-tech">
+                    <div class="tech-label">Key Technologies</div>
+                    <div class="tech-items">
+                        AI Email Bot • Intent Detection • Intent Miner • Automated Responses • Agent Escalation Logic
+                    </div>
+                </div>
+                <div class="case-stat">
+                    <div class="stat-value">20-30%</div>
+                    <div class="stat-label">Cost Reduction in Digital Service</div>
+                </div>
+                <a href="genesys-email-bot-flow.html" class="view-button">View Flow Diagram →</a>
+            </div>
+
+            <!-- Case Study 5 -->
+            <div class="case-card case-5">
+                <div class="case-number">Case Study 5</div>
+                <div class="case-title">AI Workforce Forecasting & Onboarding</div>
+                <div class="case-description">
+                    Optimizing capacity planning, scheduling, and agent training through AI-driven forecasting and intelligent coaching tools.
+                </div>
+                <div class="case-tech">
+                    <div class="tech-label">Key Technologies</div>
+                    <div class="tech-items">
+                        AI Workforce Forecasting • Intelligent Scheduling • Performance Dashboards • AI Coaching Tools • Agent Co-Pilot
+                    </div>
+                </div>
+                <div class="case-stat">
+                    <div class="stat-value">Up to 25%</div>
+                    <div class="stat-label">Reduction in Training & Onboarding Costs</div>
+                </div>
+                <a href="case-study-5-workforce-optimization.html" class="view-button">View Flow Diagram →</a>
+            </div>
+
+            <!-- Case Study 6 -->
+            <div class="case-card case-6">
+                <div class="case-number">Case Study 6</div>
+                <div class="case-title">Proactive Engagement with AI</div>
+                <div class="case-description">
+                    Moving from manual monitoring to proactive outreach based on AI-driven event triggers and intent recognition.
+                </div>
+                <div class="case-tech">
+                    <div class="tech-label">Key Technologies</div>
+                    <div class="tech-items">
+                        AI Intent Recognition • Event-Based Triggers • Personalization Rules • Unified Data • Compliance Tracking
+                    </div>
+                </div>
+                <div class="case-stat">
+                    <div class="stat-value">10-15%</div>
+                    <div class="stat-label">Revenue Increase via Personalization</div>
+                </div>
+                <a href="case-study-6-proactive-engagement.html" class="view-button">View Flow Diagram →</a>
+            </div>
+
+            <!-- Case Study 7 -->
+            <div class="case-card case-7">
+                <div class="case-number">Case Study 7</div>
+                <div class="case-title">AHT Optimization with AI</div>
+                <div class="case-description">
+                    Optimizing Average Handle Time by assisting agents with AI Co-Pilot, real-time guidance, and automated summaries.
+                </div>
+                <div class="case-tech">
+                    <div class="tech-label">Key Technologies</div>
+                    <div class="tech-items">
+                        Agent Co-Pilot • Real-Time Intent Detection • Dynamic Guidance • AI Summaries • Self-Service Deflection
+                    </div>
+                </div>
+                <div class="case-stat">
+                    <div class="stat-value">30-35%</div>
+                    <div class="stat-label">AHT Reduction with AI Assistance</div>
+                </div>
+                <a href="case-study-7-aht-optimization.html" class="view-button">View Flow Diagram →</a>
+            </div>
+
+            <!-- Case Study 8 -->
+            <div class="case-card case-8">
+                <div class="case-number">Case Study 8</div>
+                <div class="case-title">Reducing Repeat Calls</div>
+                <div class="case-description">
+                    Addressing high repeat interaction rates by providing agents with full context and AI-powered guidance for first contact resolution.
+                </div>
+                <div class="case-tech">
+                    <div class="tech-label">Key Technologies</div>
+                    <div class="tech-items">
+                        Agent Co-Pilot • Real-Time Intent Prediction • Unified Customer Data • Virtual Agent Summaries
+                    </div>
+                </div>
+                <div class="case-stat">
+                    <div class="stat-value">20-30%</div>
+                    <div class="stat-label">Reduction in Repeat Contacts</div>
+                </div>
+                <a href="case-study-8-repeat-calls.html" class="view-button">View Flow Diagram →</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>About Genesys AI Solutions</h3>
+            <p>
+                Genesys Cloud combines native AI capabilities with partner integrations to deliver comprehensive
+                customer experience automation. These case studies demonstrate real-world applications of AI
+                in contact centers, backed by industry research from Forrester, Deloitte, and PwC.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

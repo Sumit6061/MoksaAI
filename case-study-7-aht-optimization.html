@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study 7: AHT Optimization with AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .step-number {
+            min-width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            box-shadow: 0 4px 15px rgba(250, 112, 154, 0.4);
+        }
+
+        .step-content {
+            flex: 1;
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #fa709a;
+            transition: all 0.3s ease;
+        }
+
+        .step-content:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-title {
+            font-size: 1.3em;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .step-description {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .step-tech {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #fa709a;
+            font-weight: 500;
+        }
+
+        .arrow {
+            text-align: center;
+            color: #fa709a;
+            font-size: 2em;
+            margin: -10px 0;
+        }
+
+        .decision-split {
+            display: flex;
+            gap: 20px;
+            margin-left: 70px;
+        }
+
+        .decision-path {
+            flex: 1;
+            background: #fff5f5;
+            border: 2px dashed #fc8181;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .decision-path.selfservice {
+            background: #e6fffa;
+            border-color: #4fd1c5;
+        }
+
+        .decision-label {
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .copilot-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 3px solid #5a67d8;
+        }
+
+        .copilot-title {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .copilot-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .copilot-features li {
+            padding: 6px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .copilot-features li:before {
+            content: "🤖";
+            position: absolute;
+            left: 0;
+        }
+
+        .outcome-box {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(250, 112, 154, 0.3);
+        }
+
+        .outcome-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .outcome-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .outcome-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .outcome-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .stats-box {
+            background: #fffbeb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            border: 2px solid #fa709a;
+        }
+
+        .stat {
+            font-size: 2em;
+            font-weight: bold;
+            color: #fa709a;
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            color: #4a5568;
+            font-size: 1em;
+        }
+
+        .nav-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AHT Optimization with AI Agent Assistance</h1>
+        <p class="subtitle">Case Study 7: Reducing Average Handle Time</p>
+
+        <div class="flow-diagram">
+            <!-- Step 1 -->
+            <div class="flow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">Customer Initiates Contact</div>
+                    <div class="step-description">
+                        Customer reaches out via phone, chat, or messaging. Previously, all interactions required full agent handling with numerous manual steps.
+                    </div>
+                    <div class="step-tech">📞 Omnichannel Contact Entry</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <!-- Step 2 -->
+            <div class="flow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">Early Intent Detection</div>
+                    <div class="step-description">
+                        AI analyzes the initial contact in real-time to detect customer intent early in the interaction—before significant agent time is invested.
+                    </div>
+                    <div class="step-tech">🎯 Real-Time Intent Detection</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <!-- Step 3 - Decision Point -->
+            <div class="flow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">Interaction Routing Decision</div>
+                    <div class="step-description">
+                        Based on intent complexity and customer preference, system determines optimal handling path
+                    </div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <!-- Decision Split -->
+            <div class="decision-split">
+                <div class="decision-path selfservice">
+                    <div class="decision-label">🔄 Simple Request</div>
+                    <div class="step-description">
+                        <strong>Self-Service Deflection:</strong> Customer is offered automated self-service option. AI handles request through virtual agent, reducing agent workload and AHT.
+                    </div>
+                    <div class="step-tech" style="margin-top: 15px;">🤖 Virtual Agent + Automated Resolution</div>
+                </div>
+
+                <div class="decision-path">
+                    <div class="decision-label">⚠ Complex Interaction</div>
+                    <div class="step-description">
+                        <strong>Agent Routing:</strong> Interaction routed to appropriate agent with full context from initial contact, reducing information-gathering time.
+                    </div>
+                    <div class="step-tech" style="margin-top: 15px;">👤 Context-Rich Agent Routing</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <!-- Co-Pilot Section -->
+            <div class="copilot-box">
+                <div class="copilot-title">🤝 Agent Co-Pilot Real-Time Assistance</div>
+                <p style="margin-bottom: 15px;">For agent-handled interactions, Co-Pilot provides continuous support:</p>
+                <ul class="copilot-features">
+                    <li>Dynamic agent guidance based on conversation flow</li>
+                    <li>Next-best-action recommendations</li>
+                    <li>Knowledge base suggestions and quick answers</li>
+                    <li>Script prompts and compliance reminders</li>
+                    <li>System navigation shortcuts</li>
+                </ul>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <!-- Step 4 -->
+            <div class="flow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="step-title">Interaction Resolution</div>
+                    <div class="step-description">
+                        Customer issue is resolved faster with Co-Pilot assistance reducing manual steps, search time, and uncertainty about next actions.
+                    </div>
+                    <div class="step-tech">✅ Accelerated Resolution</div>
+                </div>
+            </div>
+
+            <div class="arrow">↓</div>
+
+            <!-- Step 5 -->
+            <div class="flow-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <div class="step-title">AI-Generated Post-Call Summary</div>
+                    <div class="step-description">
+                        AI automatically generates interaction summary, capturing key points, resolution, and next steps. Eliminates manual after-call work and documentation time.
+                    </div>
+                    <div class="step-tech">📝 AI Interaction Summaries + Auto-Documentation</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Outcomes Section -->
+        <div class="outcome-box">
+            <div class="outcome-title">Technical Outcomes</div>
+            <ul class="outcome-list">
+                <li>Automated handling of routine interactions via self-service</li>
+                <li>Reduced manual steps during live agent calls</li>
+                <li>Improved agent efficiency with real-time guidance</li>
+                <li>Eliminated post-call documentation time</li>
+                <li>Significant reduction in Average Handle Time (AHT)</li>
+            </ul>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-box">
+            <div class="stat">30-35%</div>
+            <div class="stat-label">AHT Reduction with AI-Assisted Agents</div>
+            <p style="margin-top: 10px; color: #718096; font-size: 0.9em;">(Source: Deloitte Research)</p>
+        </div>
+
+        <a href="index.html" class="nav-button">← Back to Index</a>
+    </div>
+</body>
+</html>
